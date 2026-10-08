@@ -70,3 +70,5 @@ ent-SurgeryImplantCavityItem = имплантация объекта
     .desc = { ent-SurgeryBase.desc }
 ent-SurgeryLimbAttachment = прикрепить конечность
     .desc = Хирургическое прикрепление конечности.
+ent-SurgeryLobotomy = хирургическая пацификация
+    .desc = { ent-SurgeryBase.desc }

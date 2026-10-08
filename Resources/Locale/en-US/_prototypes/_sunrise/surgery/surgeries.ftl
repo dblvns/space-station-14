@@ -70,3 +70,5 @@ ent-SurgeryImplantCavityItem = implant Item
     .desc = { ent-SurgeryBase.desc }
 ent-SurgeryLimbAttachment = limb Attachment
     .desc = Surgical attachment of a limb.
+ent-SurgeryLobotomy = Surgical Pacification
+    .desc = { ent-SurgeryBase.desc }

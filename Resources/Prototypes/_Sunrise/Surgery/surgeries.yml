@@ -694,6 +694,26 @@
 #
 - type: entity
   parent: SurgeryBase
+  id: SurgeryLobotomy
+  name: Lobotomy
+  components:
+  - type: Surgery
+    requirement:
+    - SurgeryOpenIncision
+    steps:
+    - SurgeryStepLobotomyPrepare
+    - SurgeryStepLobotomyDrill
+    - SurgeryStepLobotomyInsertProbe
+    - SurgeryStepLobotomyScramble
+  - type: SurgeryPartCondition
+    parts:
+    - Head
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: brain
+
+- type: entity
+  parent: SurgeryBase
   id: SurgeryExtractBrain
   name: Extract Brain
   components:

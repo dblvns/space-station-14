@@ -148,3 +148,12 @@ ent-SurgeryStepPrepareImplantSiteCavity = подготовить место дл
     .desc = { ent-SurgeryStepBase.desc }
 ent-SurgeryStepInsertItemCavity = ввести объект
     .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepLobotomyPrepare = зафиксировать голову пациента
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepLobotomyDrill = просверлить орбитальную кость
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepLobotomyInsertProbe = ввести орбитальный зонд
+    .desc = { ent-SurgeryStepBase.desc }
+ent-SurgeryStepLobotomyScramble = провести лоботомию
+    .desc = { ent-SurgeryStepBase.desc }
+

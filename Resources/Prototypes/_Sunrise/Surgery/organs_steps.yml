@@ -932,3 +932,70 @@
   - type: SurgeryItemSizeCondition
   - type: SurgeryStepOrganInsert
     slot: cavity
+
+# Lobotomy
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepLobotomyPrepare
+  name: Prepare patient for lobotomy
+  components:
+  - type: SurgeryStep
+    duration: 5
+    tools:
+    - type: Hemostat
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/scissors.rsi
+    state: hemostat
+
+- type: entity
+  parent: SurgeryStepBase
+  id: SurgeryStepLobotomyDrill
+  name: Drill orbital bone
+  components:
+  - type: SurgeryStep
+    duration: 8
+    tools:
+    - type: BoneSaw
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/saw.rsi
+    state: saw
+
+- type: entity
+  parent: BaseSunriseSurgeryStepScalpel
+  id: SurgeryStepLobotomyInsertProbe
+  name: Insert orbital probe
+  components:
+  - type: SurgeryStep
+    duration: 6
+    tools:
+    - type: Scalpel
+  - type: SurgeryStepBleedEffect
+    damage:
+      types:
+        Slash: 20
+        Blunt: 10
+  - type: SurgeryStepEmoteEffect
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel
+
+- type: entity
+  parent: BaseSunriseSurgeryStepScalpel
+  id: SurgeryStepLobotomyScramble
+  name: Perform Lobotomy
+  components:
+  - type: SurgeryStep
+    duration: 30
+    tools:
+    - type: Scalpel
+  - type: SurgeryStepBleedEffect
+    damage:
+      types:
+        Slash: 40
+        Blunt: 15
+  - type: SurgeryStepEmoteEffect
+  - type: SurgeryStepLobotomyEffect
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel

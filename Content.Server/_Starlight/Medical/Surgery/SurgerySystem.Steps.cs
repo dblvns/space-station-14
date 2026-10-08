@@ -11,7 +11,8 @@ using Content.Shared.Starlight.Medical.Surgery.Events;
 using Content.Shared.Starlight.Medical.Surgery.Steps;
 using Content.Shared.Starlight.Medical.Surgery.Steps.Parts;
 using Content.Shared.Traits.Assorted;
-
+using Content.Shared.Mindshield.Components; // Sunrise-Edit
+using Content.Shared.Starlight.Medical.Surgery.Components; // Sunrise-Edit
 namespace Content.Server.Starlight.Medical.Surgery;
 // Based on the RMC14.
 // https://github.com/RMC-14/RMC-14
@@ -41,6 +42,7 @@ public sealed partial class SurgerySystem : SharedSurgerySystem
         SubscribeLocalEvent<CustomLimbMarkerComponent, ComponentRemove>(CustomLimbRemoved);
 
         SubscribeLocalEvent<SurgeryRemoveAccentComponent, SurgeryStepEvent>(OnRemoveAccent);
+        SubscribeLocalEvent<SurgeryStepLobotomyEffectComponent, SurgeryStepEvent>(OnStepLobotomyComplete); // Sunrise-Edit
 
     }
 
@@ -189,7 +191,18 @@ public sealed partial class SurgerySystem : SharedSurgerySystem
 
         args.IsCancelled = !_limbSystem.Amputate((args.Body, body), args.Part);
     }
-
+    // Sunrise-Start
+    private void OnStepLobotomyComplete(Entity<SurgeryStepLobotomyEffectComponent> ent, ref SurgeryStepEvent args)
+    {
+        if (HasComp<MindShieldComponent>(args.Body))
+        {
+            RemCompDeferred<MindShieldComponent>(args.Body);
+            args.IsCancelled = true;
+            return;
+        }
+        EnsureComp<Content.Shared.CombatMode.Pacification.PacifiedComponent>(args.Body);
+    }
+    // Sunrise-End
     private void CustomLimbRemoved(Entity<CustomLimbMarkerComponent> ent, ref ComponentRemove args)
     {
         if (ent.Comp.VirtualPart is null)
