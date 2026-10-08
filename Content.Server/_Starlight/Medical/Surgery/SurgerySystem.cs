@@ -15,6 +15,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Server.Administration.Systems;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Starlight.Medical.Surgery.Components;
 
 namespace Content.Server.Starlight.Medical.Surgery;
 // Based on the RMC14.
@@ -33,6 +34,7 @@ public sealed partial class SurgerySystem : SharedSurgerySystem
         base.Initialize();
         InitializeSteps();
 
+        SubscribeLocalEvent<SurgeryStepLobotomyEffectComponent, SurgeryStepEvent>(OnStepLobotomyComplete); // Sunrise-Edit
         SubscribeLocalEvent<SurgeryToolComponent, AfterInteractEvent>(OnToolAfterInteract);
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
 
